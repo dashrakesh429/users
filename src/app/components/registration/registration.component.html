@@ -1,0 +1,61 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h3>User Registration</h3>
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="register-form">
+                <div class="form-group">
+                    <label>User Name</label>
+                    <input type="text" formControlName="userName" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && registerForm.controls.userName.errors }" />
+                    <div *ngIf="submitted && registerForm.controls.userName.errors" class="text-danger">
+                        <div *ngIf="registerForm.controls.userName.errors.required">User Name is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="text" formControlName="email" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && registerForm.controls.email.errors }" />
+                    <div *ngIf="submitted && registerForm.controls.email.errors" class="text-danger">
+                        <div *ngIf="registerForm.controls.email.errors.required">Email is required</div>
+                        <div *ngIf="registerForm.controls.email.errors.email">Email must be a valid email address</div>
+                    </div>
+                </div>
+                <div class="form-group address-group" formArrayName="addressGroup">
+                    <fieldset  *ngFor="let address of addressGroup.controls; let i = index">
+                        <legend>Address</legend>
+                        <ng-container [formGroupName]="i">
+                            <div class="form-group">
+                                <label for="city">City</label>
+                                <input type="text" class="form-control" id="city" formControlName="city" [ngClass]="{ 'is-invalid': submitted && checkErrors(addressGroup, i, 'city') }">
+                                <div *ngIf="submitted && checkErrors(addressGroup, i, 'city')" class="text-danger">
+                                    <div *ngIf="checkErrors(addressGroup, i, 'city', 'required')">City is required</div>
+                                </div>
+                            </div>                       
+                            <div class="form-group">
+                                <label for="state">State</label>
+                                <input type="text" class="form-control" id="state" formControlName="state" [ngClass]="{ 'is-invalid': submitted &&  checkErrors(addressGroup, i, 'state') }">
+                                <div *ngIf="submitted &&  checkErrors(addressGroup, i, 'state')" class="text-danger">
+                                    <div *ngIf=" checkErrors(addressGroup, i, 'state', 'required')">State is required</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="pincode">Pin Code</label>
+                                <input type="text" class="form-control" id="pincode" formControlName="pincode" [ngClass]="{ 'is-invalid': submitted &&  checkErrors(addressGroup, i, 'pincode') }">
+                                <div *ngIf="submitted &&  checkErrors(addressGroup, i, 'pincode')" class="text-danger">
+                                    <div *ngIf=" checkErrors(addressGroup, i, 'pincode', 'required')">Pincode is required</div>
+                                </div>
+                            </div>
+                            <div class="form-group address-btns-div">
+                                <button class="btn btn-primary btn-custom" (click)="addAddress()" *ngIf="i === (registerForm.controls.addressGroup.value.length -1)">Add Address</button>
+                                <button class="btn btn-primary btn-custom" (click)="deleteAddress(i)" *ngIf="i > 0">Delete Address</button>
+                            </div>
+                        </ng-container>                       
+                    </fieldset>                    
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary btn-custom">Register</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

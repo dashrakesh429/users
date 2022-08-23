@@ -1,0 +1,21 @@
+{
+  "users": [
+    {
+      "userName": "Rakesh",
+      "email": "rakesh@gmail.com",
+      "addressGroup": [
+        {
+          "city": "Bangalore",
+          "state": "Karnataka",
+          "pincode": "560037"
+        },
+        {
+          "city": "Bhubaneswar",
+          "state": "Odisha",
+          "pincode": "752001"
+        }
+      ],
+      "id": 1
+    }
+  ]
+}

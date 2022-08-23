@@ -1,0 +1,29 @@
+.register-form {
+    input {
+        border-radius: 0px;
+    }
+    .form-group {
+        margin-top: 10px
+    }
+    .btn-custom {
+        border-radius: 0px;
+        background-color: #000;
+        color: #fff;
+        border: 1px solid #000;
+    }
+    .btn-custom:focus {
+        box-shadow: none;
+    }
+    .address-group {
+        fieldset {
+            border: 1px solid #ddd;
+            padding: 10px;            
+        }
+        fieldset:nth-child(n+1) {
+            margin-top: 10px;
+        }
+    }
+    .address-btns-div .btn:first-child {
+        margin-right: 5px;
+    }
+}

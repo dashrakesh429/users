@@ -1,0 +1,34 @@
+<div class="table-responsive">
+    <table class="table table-bordered" *ngIf="usersData$ | async as userData">
+        <thead>
+            <tr>
+                <th>User Name</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of userData">
+                <td>{{data?.userName}}</td>
+                <td>{{data?.email}}</td>
+                <td>
+                    <ng-container *ngFor="let address of data?.addressGroup">
+                        <p>
+                            City: {{address?.city}}
+                        </p>
+                        <p>
+                            State: {{address?.state}}
+                        </p>
+                        <p>
+                            Pincode: {{address?.pincode}}
+                        </p>
+                    </ng-container>
+                </td>
+                <td class="text-center trash-td">
+                    <i class="fa-solid fa-trash-can" *ngIf="data.id" (click)="deleteUser(data.id)"></i>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

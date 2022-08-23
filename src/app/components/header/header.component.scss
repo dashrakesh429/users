@@ -1,0 +1,22 @@
+.tabs {
+    display: flex;
+    .btn {
+        color: #000;
+        background: #fff;
+        border-radius: 0px;
+        border-top: 1px solid #000;
+        border-left: 1px solid #000;
+        border-right: 1px solid #000;
+        border-bottom: none;
+        margin-top: 10px;
+    }
+    .btn:focus {
+        box-shadow: none;
+    }
+    :not(.active) {
+        margin-bottom: -6px;
+    }
+    .active {
+        margin-bottom: -8px;
+    }
+}
